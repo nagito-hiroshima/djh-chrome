@@ -25,7 +25,7 @@ function send() {
 
         if (tabTitle != "YouTube") {
             var 変数名 = new XMLHttpRequest();
-            変数名.open('GET', "https://script.google.com/macros/s/AKfycbwGEGyO29F5qEDnn5QmZM5lnzrJ94O2szNYHcylJy2VC1YZ81r7wdAJkxDxBbjqxfjHPQ/exec?p1=" + date + "&p2=" + tabURL + "&p3=" + tabTitle + "&p4=" + key);
+            変数名.open('GET', "https://script.google.com/macros/s/AKfycbz3TPwuLcHjwp7Mm0L3ckisCWRNNl7IEh_fuK54MXcGzavhv68iCup39eRL4DTbS67Wrg/exec?p1=" + date + "&p2=" + tabURL + "&p3=" + tabTitle + "&p4=" + key);
             変数名.send();
         }
         tabTitle = document.title;
