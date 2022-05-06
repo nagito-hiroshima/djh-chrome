@@ -8,7 +8,6 @@
         "js": ["content_script.js"]
     }],
     "permissions": [
-        "tabs",
         "storage"
     ],
     "icons": {
