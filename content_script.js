@@ -97,7 +97,7 @@ function times() {
             /* 1限 */
 
 
-        } else if (hour == 10 && min == 35) {//10:35 開始
+        } else if (hour == 10 && min == 35 && sec==25) {//10:35 開始
             //start()
 
             /* 休憩 */
@@ -108,7 +108,7 @@ function times() {
 
             /* ２限 */
 
-        } else if (hour == 11 && min == 35) {//11:35
+        } else if (hour == 11 && min == 40) {//11:35
             start()
 
             /* 休憩 */
@@ -118,7 +118,7 @@ function times() {
 
             /* 3限 */
 
-        } else if (hour == 12 && min == 35) {//12:35
+        } else if (hour == 12 && min == 35 && sec==25) {//12:35
             start()
 
             /* 休憩 */
@@ -126,9 +126,9 @@ function times() {
         } else if (hour == 13 && min == 14 && sec == 50) {//13:15
             stop()
 
-             /* 4限 */
+            /* 4限 */
 
-        } else if (hour == 14 && min == 5) {//14:05
+        } else if (hour == 14 && min == 5 && sec==25) {//14:05
             start()
 
             /* 休憩 */
@@ -136,25 +136,35 @@ function times() {
         } else if (hour == 14 && min == 14 && sec == 50) {//14:15
             stop()
 
-             /* 5限 */
+            /* 5限 */
 
-        } else if (hour == 15 && min == 5) {//15:05
+        } else if (hour == 15 && min == 5 && sec==25) {//15:05
             start()
-            
+
             /* 休憩 */
 
         } else if (hour == 15 && min == 14 && sec == 50) {//15:15
             stop()
 
-             /* 6限 */
+            /* 6限 */
 
-        } else if (hour == 16 && min == 14 && sec == 50) {//16:15
+        } else if (hour == 16 && min == 15 && sec==25) {//16:15
+            start()
+
+            /* 放課後 */
+
+        } else if (hour == 15 && min == 58 && sec==50) {//16:15
+            stop()
+
+            /* 放課後 */
+
+        } else if (hour == 16 && min == 15 && sec==25) {//16:15
             start()
 
             /* 放課後 */
 
         } else {
-            if (min == 6 || min == 16 || min == 31 || min == 36 || min == 47) { //クールタイムを解除
+            if (min == 7 || min == 16 || min == 31 || min == 37 || min == 47) { //クールタイムを解除
                 forr = 1;
             }
         }
@@ -167,6 +177,7 @@ function stop() {
         if ((document.getElementsByClassName('video-stream')[0].volume - 0.01) <= .0) {
             document.getElementsByClassName('video-stream')[0].volume = 0.0;
             document.getElementsByClassName('video-stream')[0].pause();
+            document.getElementsByClassName("ytp-mute-button")[0].click();
             clearInterval(timerid);  //タイマー解除
         }
         // 0.1ずつボリュームを減らしていく
@@ -179,11 +190,13 @@ function stop() {
 }
 
 function start() {
+    document.getElementsByClassName("ytp-mute-button")[0].click();
+    document.getElementsByClassName('video-stream')[0].volume = 0.0;
     document.getElementsByClassName('video-stream')[0].play();
     let timerid = setInterval(() => {
         // ボリュームが1になったら終了
-        if ((document.getElementsByClassName('video-stream')[0].volume + 0.01) >= .37) {
-            document.getElementsByClassName('video-stream')[0].volume = .37;
+        if ((document.getElementsByClassName('video-stream')[0].volume + 0.01) >= 0.37) {
+            document.getElementsByClassName('video-stream')[0].volume = 0.37;
             clearInterval(timerid);  //タイマー解除
         }
         // 0.1ずつボリュームを足していく
