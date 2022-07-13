@@ -1,7 +1,11 @@
+//宣言
 let tabTitle = "",
     newtabTitle = "",
-    key = ""
+    key = "",
+    forr = 1
 
+
+//送信
 function send() {
     if (tabTitle != newtabTitle) {
         let tabURL = window.location.href;
@@ -32,12 +36,161 @@ function send() {
     }
 }
 
+//インターバル
 setInterval(() => {
-    chrome.storage.local.get("key", function(value) {
+    times()
+    chrome.storage.local.get("key", function (value) {
         key = value.key;
     });
     newtabTitle = document.title;
     send()
 }, 1000);
 
+//初回送信
 send()
+
+
+//定刻操作
+function times() {
+    var now = new Date();
+    var hour = now.getHours();
+    var min = now.getMinutes();
+    var sec = now.getSeconds();
+
+    if (forr == 1) {
+        //29分 44分 14分 29分
+
+        /*
+        9:29:50 stop
+        9:44:50 stop
+
+        10:35 start
+        10:44:50 stop
+
+        11:35 start
+        11:44:50 stop
+
+        12:35 start
+        13:14:50 stop
+        
+        14:05 start
+        14:14:50 stop
+
+        15:05 start
+        15:14:50 stop
+
+        16:14:50 start
+
+        */
+
+
+
+        if (hour == 9 && min == 29 && sec == 50) {//9:30 停止
+            stop()
+
+            /* 朝礼 */
+
+
+        } else if (hour == 9 && min == 44 && sec == 50) {//9:45 停止
+            stop()
+
+            /* 1限 */
+
+
+        } else if (hour == 10 && min == 35) {//10:35 開始
+            //start()
+
+            /* 休憩 */
+
+
+        } else if (hour == 10 && min == 44 && sec == 50) {//10:45 停止
+            stop()
+
+            /* ２限 */
+
+        } else if (hour == 11 && min == 35) {//11:35
+            start()
+
+            /* 休憩 */
+
+        } else if (hour == 11 && min == 44 && sec == 50) {//11:45
+            stop()
+
+            /* 3限 */
+
+        } else if (hour == 12 && min == 35) {//12:35
+            start()
+
+            /* 休憩 */
+
+        } else if (hour == 13 && min == 14 && sec == 50) {//13:15
+            stop()
+
+             /* 4限 */
+
+        } else if (hour == 14 && min == 5) {//14:05
+            start()
+
+            /* 休憩 */
+
+        } else if (hour == 14 && min == 14 && sec == 50) {//14:15
+            stop()
+
+             /* 5限 */
+
+        } else if (hour == 15 && min == 5) {//15:05
+            start()
+            
+            /* 休憩 */
+
+        } else if (hour == 15 && min == 14 && sec == 50) {//15:15
+            stop()
+
+             /* 6限 */
+
+        } else if (hour == 16 && min == 14 && sec == 50) {//16:15
+            start()
+
+            /* 放課後 */
+
+        } else {
+            if (min == 6 || min == 16 || min == 31 || min == 36 || min == 47) { //クールタイムを解除
+                forr = 1;
+            }
+        }
+    }
+}
+
+function stop() {
+    let timerid = setInterval(() => {
+        // ボリュームが0になったら終了
+        if ((document.getElementsByClassName('video-stream')[0].volume - 0.01) <= .0) {
+            document.getElementsByClassName('video-stream')[0].volume = 0.0;
+            document.getElementsByClassName('video-stream')[0].pause();
+            clearInterval(timerid);  //タイマー解除
+        }
+        // 0.1ずつボリュームを減らしていく
+        else {
+            document.getElementsByClassName('video-stream')[0].volume -= 0.01;
+        }
+    }
+        , 100); //0.2秒ごとに繰り返す
+    forr = 0;//クールタイムを設定
+}
+
+function start() {
+    document.getElementsByClassName('video-stream')[0].play();
+    let timerid = setInterval(() => {
+        // ボリュームが1になったら終了
+        if ((document.getElementsByClassName('video-stream')[0].volume + 0.01) >= .37) {
+            document.getElementsByClassName('video-stream')[0].volume = .37;
+            clearInterval(timerid);  //タイマー解除
+        }
+        // 0.1ずつボリュームを足していく
+        else {
+            document.getElementsByClassName('video-stream')[0].volume += 0.01;
+        }
+    }
+        , 100); //0.2秒ごとに繰り返す
+    forr = 0;//クールタイムを設定
+}
