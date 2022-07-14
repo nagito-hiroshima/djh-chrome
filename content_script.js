@@ -154,16 +154,6 @@ function times() {
 
             /* 放課後 */
 
-        } else if (hour == 15 && min == 58 && sec==50) {//16:15
-            stop()
-
-            /* 放課後 */
-
-        } else if (hour == 16 && min == 15 && sec==25) {//16:15
-            start()
-
-            /* 放課後 */
-
         } else {
             if (min == 7 || min == 16 || min == 31 || min == 37 || min == 47) { //クールタイムを解除
                 forr = 1;
