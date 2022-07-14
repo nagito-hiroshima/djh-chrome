@@ -58,7 +58,7 @@ function times() {
     var sec = now.getSeconds();
     var ofweek = now.getDay()
 
-    if (forr == 1 && ( ofweek> 1&& ofweek!=6 )) {
+    if (forr == 1 && (ofweek > 1 && ofweek != 6)) {
         //29分 44分 14分 29分
 
         /*
@@ -98,7 +98,7 @@ function times() {
             /* 1限 */
 
 
-        } else if (hour == 10 && min == 35 && sec==25) {//10:35 開始
+        } else if (hour == 10 && min == 35 && sec == 25) {//10:35 開始
             //start()
 
             /* 休憩 */
@@ -119,7 +119,7 @@ function times() {
 
             /* 3限 */
 
-        } else if (hour == 12 && min == 35 && sec==25) {//12:35
+        } else if (hour == 12 && min == 35 && sec == 25) {//12:35
             start()
 
             /* 休憩 */
@@ -129,7 +129,7 @@ function times() {
 
             /* 4限 */
 
-        } else if (hour == 14 && min == 5 && sec==25) {//14:05
+        } else if (hour == 14 && min == 5 && sec == 25) {//14:05
             start()
 
             /* 休憩 */
@@ -139,7 +139,7 @@ function times() {
 
             /* 5限 */
 
-        } else if (hour == 15 && min == 5 && sec==25) {//15:05
+        } else if (hour == 15 && min == 5 && sec == 25) {//15:05
             start()
 
             /* 休憩 */
@@ -149,15 +149,15 @@ function times() {
 
             /* 6限 */
 
-        } else if (hour == 16 && min == 15 && sec==25) {//16:15
+        } else if (hour == 16 && min == 15 && sec == 25) {//16:15
             start()
 
             /* 放課後 */
 
         } else {
-            if (min == 7 || min == 16 || min == 31 || min == 37 || min == 47) { //クールタイムを解除
+            setTimeout(() => {
                 forr = 1;
-            }
+            }, 60000);
         }
     }
 }
