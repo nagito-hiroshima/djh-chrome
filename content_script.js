@@ -56,8 +56,9 @@ function times() {
     var hour = now.getHours();
     var min = now.getMinutes();
     var sec = now.getSeconds();
+    var ofweek = now.getDay()
 
-    if (forr == 1) {
+    if (forr == 1 && ( ofweek> 1&& ofweek!=6 )) {
         //29分 44分 14分 29分
 
         /*
