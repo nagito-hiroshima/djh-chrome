@@ -84,9 +84,12 @@ function times() {
 
         */
 
+        if (hour == 9 && min == 0 && sec == 25) {//9:30 停止
+            start()
 
+            /* 朝礼 */
 
-        if (hour == 9 && min == 29 && sec == 50) {//9:30 停止
+        } else if (hour == 9 && min == 29 && sec == 50) {//9:30 停止
             stop()
 
             /* 朝礼 */
