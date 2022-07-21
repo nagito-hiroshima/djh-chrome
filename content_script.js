@@ -58,7 +58,7 @@ function times() {
     var sec = now.getSeconds();
     var ofweek = now.getDay()
 
-    if (forr == 1 && (ofweek > 1 && ofweek != 6)) {
+    if (ofweek > 1 && ofweek != 6) {
         //29分 44分 14分 29分
 
         /*
@@ -157,13 +157,13 @@ function times() {
 
             /* 放課後 */
 
-        } else {
+        }
             setTimeout(() => {
-                forr = 1;
-            }, 60000);
+
+            }, 70000);
         }
     }
-}
+
 
 function stop() {
     let timerid = setInterval(() => {
