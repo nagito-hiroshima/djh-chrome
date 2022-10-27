@@ -84,7 +84,7 @@ function times() {
 
         */
 
-        if (hour == 9 && min == 0 && sec == 25) {//9:30 停止
+        if (hour == 9 && min == 0 && sec == 25) {//9:00:25 停止
             start()
 
             /* 朝礼 */
@@ -112,7 +112,7 @@ function times() {
 
             /* ２限 */
 
-        } else if (hour == 11 && min == 40) {//11:35
+        } else if (hour == 11 && min == 40 && sec == 25) {//11:35
             start()
 
             /* 休憩 */
