@@ -1,7 +1,7 @@
 {
     "name": "DJH拡張機能[再生曲送信]",
     "description": "現在の再生しているYouTubeのURLでDJIに送信する。",
-    "version": "1.3.5",
+    "version": "1.4.0",
     "manifest_version": 3,
     "content_scripts": [{
         "matches": ["https://www.youtube.com/*"],
